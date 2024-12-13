@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const AuthRouter = require('./routes/auth.js');
 const cookieParser = require('cookie-parser');
+const userRouter = require('./routes/userRoutes.js');
 
 const app = express();
 
@@ -10,6 +11,7 @@ dotenv.config();
 app.use(cookieParser());
 app.use(express.json());
 app.use('/auth', AuthRouter);
+app.use('/user', userRouter);
 
 app.get('/', (req, res) => {
   res.send('hello world');
